@@ -6,6 +6,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+import java.util.List;
 import java.util.Objects;
 
 @Getter
@@ -24,12 +25,26 @@ public class Backlog {
     @NotEmpty(message = "El projectIdentifier no puede ser vacio")
     private String projectIdentifier;
 
-
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "project_id")
     @JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
     private Project project;
 
+    @OneToMany(fetch = FetchType.LAZY)
+    @JoinColumn(name = "projectTask_id")
+    @JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
+    private List<ProjectTask> projectTasks;
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Backlog backlog = (Backlog) o;
+        return Objects.equals(id, backlog.id);
+    }
 
+    @Override
+    public int hashCode() {
+        return 0;
+    }
 }

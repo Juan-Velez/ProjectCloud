@@ -1,5 +1,6 @@
 package co.com.poli.talleruno.tallerunocloud.controller;
 
+import co.com.poli.talleruno.tallerunocloud.services.BacklogService;
 import co.com.poli.talleruno.tallerunocloud.services.ProjectService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -17,6 +18,11 @@ import java.util.stream.Collectors;
 @RequestMapping("/backlog")
 @RequiredArgsConstructor
 public class BacklogController {
+
+    private final BacklogService backlogService;
+
+    
+
 
 /*
     private final ProjectService projectService;

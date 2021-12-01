@@ -15,20 +15,17 @@ public class BacklogServiceImpl implements BacklogService {
     private final BacklogRepository backlogRepository;
 
     @Override
-    @Transactional(rollbackFor = Exception.class)
-    public void save(Backlog backlog) {
-        backlogRepository.save(backlog);
+    public List<Backlog> findAllBacklog() {
+        return backlogRepository.findAllBacklog();
+        }
+
+    @Override
+    public Backlog addBacklog(Backlog backlog) {
+        return null;
     }
 
     @Override
-    @Transactional(readOnly = true)
-    public List<Backlog> findAll() {
-        return   backlogRepository.findAll();
-    }
-
-    @Override
-    @Transactional(readOnly = true)
-    public Backlog findById(Long id) {
-        return backlogRepository.findById(id).orElse(null);
+    public Backlog findByIdBacklog(Long id) {
+        return  backlogRepository.findById(id).orElse(null);
     }
 }

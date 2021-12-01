@@ -6,10 +6,11 @@ import co.com.poli.talleruno.tallerunocloud.entities.Backlog;
 import java.util.List;
 
 public interface BacklogService {
-    void save(Backlog backlog);
-    List<Backlog> findAll();
-    Backlog findById(Long id);
 
+
+    List<Backlog> findAllBacklog();
+    Backlog addBacklog(Backlog backlog);
+    Backlog findByIdBacklog (Long id);
 
 
 }

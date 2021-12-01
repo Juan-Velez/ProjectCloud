@@ -1,4 +1,4 @@
-package co.com.poli.talleruno.tallerunocloud.helpers;
+package co.com.poli.talleruno.tallerunocloud.dto;
 
 import org.springframework.stereotype.Component;
 

@@ -5,6 +5,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 import java.util.Date;
 import java.util.Objects;
 
@@ -22,18 +23,17 @@ public class Project {
     @Column(name = "id")
     private Long id;
     @NotEmpty(message = "El projectName no puede ser vacio")
-    @Column(name = "projectName")
+    @Column(name = "projectName" ,unique = true,nullable = true)
     private String projectName;
     @NotEmpty(message = "El projectIdentifier no puede ser vacio")
-    @Column(name = "projectIdentifier")
+    @Column(name = "projectIdentifier", unique = true,nullable = true,updatable = false)
+    @Size (min = 5, max = 7, message = "El projectIdentifier de usuario debe tener entre 5y 7 caracteres")
     private String projectIdentifier;
     @NotEmpty(message = "El description no puede ser vacio")
-    @Column(name = "description")
+    @Column(name = "description",nullable = true)
     private String description;
-    @NotEmpty(message = "El date no puede ser vacio")
     @Column(name = "startDate")
     private Date startDate;
-    @NotEmpty(message = "El endDate no puede ser vacio")
     @Column(name = "endDate")
     private Date endDate;
 

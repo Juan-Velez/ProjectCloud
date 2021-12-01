@@ -9,5 +9,8 @@ import java.util.List;
 @Repository
 public interface BacklogRepository  extends JpaRepository<Backlog,Long> {
 
-    List<Backlog> findAllById(Backlog backlog);
+    List<Backlog> findAllBacklog();
+    Backlog addBacklog(Backlog backlog);
+    Backlog findByIdBacklog (Long id);
+
 }
