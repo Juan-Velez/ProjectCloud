@@ -5,7 +5,7 @@ import java.util.List;
 
 public interface ProjectTaskService {
 
-    void save(ProjectTask projectTask);
-    void delete(ProjectTask projectTask);
+    ProjectTask save(ProjectTask projectTask);
+    ProjectTask delete(Long id);
     List<ProjectTask> findAll();
 }

@@ -10,7 +10,7 @@ import java.util.List;
 public interface BacklogRepository  extends JpaRepository<Backlog,Long> {
 
     List<Backlog> findAllBacklog();
-    Backlog addBacklog(Backlog backlog);
-    Backlog findByIdBacklog (Long id);
+    Backlog save(Backlog backlog);
+
 
 }

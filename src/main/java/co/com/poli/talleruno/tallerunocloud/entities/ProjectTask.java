@@ -1,6 +1,11 @@
 package co.com.poli.talleruno.tallerunocloud.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
@@ -9,6 +14,12 @@ import javax.validation.constraints.Size;
 import java.util.Date;
 import java.util.Objects;
 
+@Getter
+@Entity
+@Table(name = "projectTasks")
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 public class ProjectTask {
 
     @Id
@@ -41,8 +52,8 @@ public class ProjectTask {
     @Column(name = "projectIdentifier",updatable = false)
     private String projectIdentifier;
 
-
-    @OneToOne(fetch = FetchType.LAZY)
+    @JsonBackReference
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "projectTask_id")
     @JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
     private Backlog backlog;

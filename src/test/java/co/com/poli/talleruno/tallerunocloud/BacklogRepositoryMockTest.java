@@ -18,15 +18,5 @@ public class BacklogRepositoryMockTest {
     private BacklogRepository backlogRepository;
 
 
-    @Test
-    public void when_finByBacklog_return_ListBacklog(){
-        Backlog backlog = Backlog.builder()
-                .project(Project.builder().id(1L).build())
-                .projectIdentifier("IN")
-                .build();
-        backlogRepository.save(backlog);
-        List<Backlog> backlogs = backlogRepository.findAllById(backlog.getProject().getBacklog());
-        //Assertions.assertThat(backlogs.size()).isEqualTo(2);
-    }
 
 }

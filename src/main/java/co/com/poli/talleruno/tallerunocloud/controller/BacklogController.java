@@ -1,10 +1,13 @@
 package co.com.poli.talleruno.tallerunocloud.controller;
 
+import co.com.poli.talleruno.tallerunocloud.entities.Backlog;
 import co.com.poli.talleruno.tallerunocloud.services.BacklogService;
 import co.com.poli.talleruno.tallerunocloud.services.ProjectService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowire;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,10 +19,25 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/backlog")
-@RequiredArgsConstructor
+
+//@RequiredArgsConstructor
 public class BacklogController {
 
-    private final BacklogService backlogService;
+    @Autowired
+    private BacklogService  backlogService;
+    //private final BacklogService backlogService;
+
+    @GetMapping
+    List<Backlog> findAllBacklog(){
+        return backlogService.findAllBacklog();
+    }
+
+    @PostMapping
+    Backlog save(Backlog backlog){
+        return  backlogService.save(backlog);
+    }
+
+
 
     
 

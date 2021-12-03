@@ -2,6 +2,7 @@ package co.com.poli.talleruno.tallerunocloud.entities;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
 
 import javax.persistence.*;
@@ -16,6 +17,7 @@ import java.util.Objects;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+
 public class Backlog {
 
     @Id
@@ -25,14 +27,15 @@ public class Backlog {
     @NotEmpty(message = "El projectIdentifier no puede ser vacio")
     private String projectIdentifier;
 
+
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "project_id")
     @JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
     private Project project;
 
-    @OneToMany(fetch = FetchType.LAZY)
-    @JoinColumn(name = "projectTask_id")
-    @JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
+    @JsonManagedReference
+    @OneToMany(mappedBy = "backlog",fetch = FetchType.EAGER,cascade = CascadeType.PERSIST)
+   // @JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
     private List<ProjectTask> projectTasks;
 
     @Override

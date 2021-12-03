@@ -5,6 +5,7 @@ import java.util.List;
 
 public interface ProjectService {
 
-    void save(Project project);
     List<Project> findAll();
+    Project save(Project project);
+
 }

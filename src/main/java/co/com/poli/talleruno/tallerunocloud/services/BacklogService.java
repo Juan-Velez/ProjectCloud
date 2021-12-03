@@ -2,15 +2,16 @@ package co.com.poli.talleruno.tallerunocloud.services;
 
 
 import co.com.poli.talleruno.tallerunocloud.entities.Backlog;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public interface BacklogService {
 
-
     List<Backlog> findAllBacklog();
-    Backlog addBacklog(Backlog backlog);
-    Backlog findByIdBacklog (Long id);
+    Backlog save(Backlog backlog);
+
 
 
 }
